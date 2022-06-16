@@ -1,0 +1,17 @@
+<div class="character-creation">
+	<button (click)="onCharacterCreationFormToggle()" mat-raised-button color="primary">Create another character</button>
+</div>
+
+<div *ngIf="isCharacterCreationFormOpen" class="character-creation_modal">
+	<div class="character-creation_wrapper">
+		<button (click)="onCharacterCreationFormToggle()" class="character-creation_wrapper_close" mat-mini-fab aria-label="Close modal">
+			<mat-icon>close</mat-icon>
+		</button>
+		<h2>What is your name, adventurer ?</h2>
+		<mat-form-field class="example-full-width" appearance="fill">
+			<mat-label>Name</mat-label>
+			<input matInput [(ngModel)]="newCharacterName" />
+		</mat-form-field>
+		<button (click)="createNewCharacter()" mat-raised-button color="primary">Start</button>
+	</div>
+</div>

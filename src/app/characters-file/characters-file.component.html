@@ -1,0 +1,16 @@
+<div class="character-file">
+	<div *ngIf="selectedCharacter">
+		<h2>Character selectionné : {{ selectedCharacter.name }} {{ selectedCharacter.id }}</h2>
+	</div>
+	<ul class="character-file_list">
+		<li *ngFor="let character of characters" class="character-file_card">
+			<button type="button" (click)="onSelect(character.id)" [class.selected]="character.id === selectedCharacter?.id">
+				<span>
+					<h2>{{ character.name }}</h2>
+					<p>Lvl: {{ character.level }}</p>
+				</span>
+			</button>
+		</li>
+	</ul>
+	<app-character-creation></app-character-creation>
+</div>
