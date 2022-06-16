@@ -8,19 +8,20 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
-
+import { MatDialogModule } from '@angular/material/dialog';
 
 import { AppComponent } from './app.component';
 import { CharactersFileComponent } from './characters-file/characters-file.component';
 
-import { CharacterCreationComponent } from './character-creation/character-creation.component';
+import { CharacterCreationComponent, CharactersCreationModal } from './character-creation/character-creation.component';
 import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     CharactersFileComponent,
-    CharacterCreationComponent
+    CharacterCreationComponent,
+    CharactersCreationModal
   ],
   imports: [
     BrowserModule,
@@ -32,7 +33,8 @@ import { AppRoutingModule } from './app-routing.module';
     MatButtonModule,
     MatInputModule,
     MatIconModule,
-    AppRoutingModule
+    AppRoutingModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]

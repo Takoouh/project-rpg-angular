@@ -1,45 +1,6 @@
 .character-creation {
-   display: flex;
-   button {
-    margin: auto;
-   }
-
-    &_modal{
-        position: absolute;
-        top:0;
-        left:0;
-        width: 100vw;
-        height: 100vh;
-        background-color: rgba(0,0,0,0.8);
-        display: flex;
+    display: flex;
+    button {
+     margin: auto;
     }
-
-    &_wrapper {
-        margin: auto;
-        background-color: white;
-        border-radius: 15px;
-        max-width: 900px;
-        max-height: 90vh;
-        padding: 50px 20px 50px 20px;
-        position: relative;
-        display: flex;
-        flex-direction: column;
-
-        &_close {
-            position: absolute;
-            top:10px;
-            right:10px;
-        }
-
-        h2 {
-            color: rgb(49, 49, 49)
-        }
-
-        input {
-            color: #636363;
-        }
-
-    }
-
-
-}
+ }

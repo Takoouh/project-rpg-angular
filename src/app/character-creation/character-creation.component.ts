@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { CharacterService } from '../character.service';
 
 @Component({
@@ -7,24 +8,37 @@ import { CharacterService } from '../character.service';
   styleUrls: ['./character-creation.component.scss']
 })
 export class CharacterCreationComponent implements OnInit {
+  constructor(
+    public modal: MatDialog
+    ) { }
 
-  newCharacterName:string = '';
-  isCharacterCreationFormOpen:boolean = false;
-  onCharacterCreationFormToggle():void{
-    this.isCharacterCreationFormOpen =!this.isCharacterCreationFormOpen
+  openModal():void {
+    this.modal.open(CharactersCreationModal)
   }
-
-  createNewCharacter():void {
-    if(this.newCharacterName){
-      this.characterService.createCharacter(this.newCharacterName.trim()).subscribe(()=>this.onCharacterCreationFormToggle)
-      this.onCharacterCreationFormToggle();
-    }
-  }
-
-
-  constructor(private characterService: CharacterService) { }
 
   ngOnInit(): void {
+  }
+
+}
+
+
+@Component({
+  selector: 'character-creation-modal',
+  templateUrl:'character-creation-modal.html',
+  styleUrls: ['./character-creation-modal.scss']
+})
+export class CharactersCreationModal {
+  constructor(
+    private characterService: CharacterService,
+    public modalRef: MatDialogRef<CharacterCreationComponent>
+    ) { }
+
+  newCharacterName:string = '';
+  
+  createNewCharacter():void {
+    if(this.newCharacterName){
+      this.characterService.createCharacter(this.newCharacterName.trim()).subscribe(()=>this.modalRef.close())
+    }
   }
 
 }

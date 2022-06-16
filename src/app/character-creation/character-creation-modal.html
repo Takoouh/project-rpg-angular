@@ -1,0 +1,13 @@
+<div class="character-creation_wrapper">
+	<div mat-dialog-actions class="character-creation_wrapper_close">
+		<button mat-dialog-close mat-mini-fab aria-label="Close modal">
+			<mat-icon>close</mat-icon>
+		</button>
+	</div>
+	<h2>What is your name, adventurer ?</h2>
+	<mat-form-field class="example-full-width" appearance="fill">
+		<mat-label>Name</mat-label>
+		<input matInput [(ngModel)]="newCharacterName" />
+	</mat-form-field>
+	<button (click)="createNewCharacter()" mat-raised-button color="primary">Start</button>
+</div>
