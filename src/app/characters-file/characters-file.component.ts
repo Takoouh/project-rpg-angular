@@ -28,6 +28,7 @@ export class CharactersFileComponent implements OnInit {
   onSelect(characterId: number): void {
     this.selectedCharacter = this.characters.find(character => character.id === characterId)
     localStorage.setItem("currentCharacterId", characterId.toString())
+    location.reload();
   }
 
   getCharacters(): void {

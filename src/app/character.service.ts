@@ -16,6 +16,13 @@ export class CharacterService {
     headers: new HttpHeaders({'Content-Type': 'application/json'})
   }
 
+  getCharacter(characterId:number):Observable<Character>{
+    return this.http.get<Character>(`${this.characterUrl}/${characterId}`)
+    .pipe(
+      catchError(this.handleError<Character>('getCharacter'))
+    )
+  }
+
   getCharacters():Observable<Character[]>{
     return this.http.get<Character[]>(this.characterUrl)
     .pipe(

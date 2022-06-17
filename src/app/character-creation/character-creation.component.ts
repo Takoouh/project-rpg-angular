@@ -37,7 +37,9 @@ export class CharactersCreationModal {
   
   createNewCharacter():void {
     if(this.newCharacterName){
-      this.characterService.createCharacter(this.newCharacterName.trim()).subscribe(()=>this.modalRef.close())
+      this.characterService.createCharacter(this.newCharacterName.trim()).subscribe((result)=>{
+        localStorage.setItem('currentCharacterId', result.id.toString())
+        return location.reload()})
     }
   }
 

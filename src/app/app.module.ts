@@ -10,11 +10,15 @@ import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDialogModule } from '@angular/material/dialog';
 
+import { StoreModule } from '@ngrx/store';
+import { characterReducer } from './character.reducer';
+
 import { AppComponent } from './app.component';
 import { CharactersFileComponent, CharactersFileDeleteModal } from './characters-file/characters-file.component';
 
 import { CharacterCreationComponent, CharactersCreationModal } from './character-creation/character-creation.component';
 import { AppRoutingModule } from './app-routing.module';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 @NgModule({
   declarations: [
@@ -35,7 +39,12 @@ import { AppRoutingModule } from './app-routing.module';
     MatInputModule,
     MatIconModule,
     AppRoutingModule,
-    MatDialogModule
+    MatDialogModule,
+    //Reducer
+    StoreModule.forRoot({character: characterReducer}),
+    StoreDevtoolsModule.instrument({
+      name: 'Project-rpg App'
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]
