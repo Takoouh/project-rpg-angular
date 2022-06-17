@@ -11,7 +11,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatDialogModule } from '@angular/material/dialog';
 
 import { AppComponent } from './app.component';
-import { CharactersFileComponent } from './characters-file/characters-file.component';
+import { CharactersFileComponent, CharactersFileDeleteModal } from './characters-file/characters-file.component';
 
 import { CharacterCreationComponent, CharactersCreationModal } from './character-creation/character-creation.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -21,7 +21,8 @@ import { AppRoutingModule } from './app-routing.module';
     AppComponent,
     CharactersFileComponent,
     CharacterCreationComponent,
-    CharactersCreationModal
+    CharactersCreationModal,
+    CharactersFileDeleteModal
   ],
   imports: [
     BrowserModule,

@@ -14,9 +14,10 @@
 }
 
 .character-file_card {
+    position: relative;
     width: 46%;
     margin: 2%;
-    button {
+    &--body {
         cursor: pointer;
         text-align: left;
         width: 100%;
@@ -24,6 +25,18 @@
         &:hover, &.selected {  
               background: rgb(107, 119, 187);  
 
+        }
+    }
+
+    &--delete {
+        position: absolute;
+        top:10px;
+        right: 10px;
+        width: 45px;
+        height: 45px;
+
+        .mat-button-wrapper{
+            padding: 0px;
         }
     }
 

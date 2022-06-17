@@ -26,7 +26,14 @@ export class CharacterService {
   createCharacter(name:string):Observable<Character>{
     return this.http.post<Character>(this.characterUrl, {name}, this.httpOptions)
     .pipe(
-      catchError(this.handleError<Character>('getCharacters'))
+      catchError(this.handleError<Character>('createCharacter'))
+    )
+  }
+
+  deleteCharacter(characterId:number):Observable<Character>{
+    return this.http.delete<Character>(`${this.characterUrl}/${characterId}`)
+    .pipe(
+      catchError(this.handleError<Character>('deleteCharacter'))
     )
   }
 

@@ -4,7 +4,18 @@
 	</div>
 	<ul class="character-file_list">
 		<li *ngFor="let character of characters" class="character-file_card">
-			<button type="button" (click)="onSelect(character.id)" [class.selected]="character.id === selectedCharacter?.id">
+			<button
+				class="character-file_card--delete"
+				color="primary"
+				mat-mini-fab
+				aria-label="Delete Character"
+				mat-button
+				(click)="openDialog(character.id, character.name)"
+			>
+				<mat-icon>delete</mat-icon>
+			</button>
+
+			<button type="button" (click)="onSelect(character.id)" class="character-file_card--body">
 				<span>
 					<h2>{{ character.name }}</h2>
 					<p>Lvl: {{ character.level }}</p>

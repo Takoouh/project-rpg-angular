@@ -1,0 +1,8 @@
+<div class="characters-file-delete-modal">
+	<h2>Are you sure you want to delete {{data.characterName}} ?</h2>
+	<div class="characters-file-delete-modal--answers">
+		<button (click)="deleteCharacter(data.characterId)" mat-raised-button color="warn">Yes</button>
+
+		<button mat-raised-button mat-dialog-close color="primary">No</button>
+	</div>
+</div>

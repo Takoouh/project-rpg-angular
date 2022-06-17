@@ -1,5 +1,5 @@
 <h1>{{ title | uppercase }}</h1>
-<nav>
+<nav *ngIf="isPlayerLogged">
 	<a routerLink="/">Home</a>
 	<a routerLink="/characters">Select Character</a>
 </nav>
