@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { Character } from '../interfaces/character';
+import { CharacterFile } from '../interfaces/character';
 import { CharacterService } from '../character.service';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
@@ -7,7 +7,7 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dial
 export interface CharacterDeleteModalData {
   characterId: number;
   characterName: string;
-  characters: Character[]
+  characters: CharacterFile[]
 }
 
 @Component({
@@ -21,12 +21,10 @@ export class CharactersFileComponent implements OnInit {
     public dialog: MatDialog
     ) { }
 
-  characters: Character[] = [];
+  characters: CharacterFile[] = [];
 
   
-  selectedCharacter?: Character;
   onSelect(characterId: number): void {
-    this.selectedCharacter = this.characters.find(character => character.id === characterId)
     localStorage.setItem("currentCharacterId", characterId.toString())
     location.reload();
   }

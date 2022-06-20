@@ -8,7 +8,7 @@ import { Character } from './interfaces/character';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
   character$:Observable<Character>;
@@ -31,7 +31,6 @@ export class AppComponent {
     const localStorageCharacterId:string | null = localStorage.getItem("currentCharacterId")
     if(!!localStorageCharacterId){
       this.characterService.getCharacter(parseInt(localStorageCharacterId)).subscribe(result=> this.store.dispatch(storeCharacterInfos({character:result})))
-     
     }
   }
 }

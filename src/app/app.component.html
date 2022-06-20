@@ -1,7 +1,11 @@
-<h1>{{ title | uppercase }}</h1>
-<nav *ngIf="isPlayerLogged">
-	<a routerLink="/">Home</a>
-	<a routerLink="/characters">Select Character</a>
-	<a (click)="onLogout()" routerLink="/">Logout</a>
-</nav>
-<router-outlet></router-outlet>
+<div class="page_wrapper">
+	<h1>{{ title | uppercase }}</h1>
+	<nav *ngIf="isPlayerLogged">
+		<ul>
+			<li><a routerLink="" routerLinkActive="nav--active">Home</a></li>
+			<li><a routerLink="/character-infos" routerLinkActive="nav--active">Character Infos</a></li>
+			<li><a (click)="onLogout()" routerLink="/">Logout</a></li>
+		</ul>
+	</nav>
+	<router-outlet></router-outlet>
+</div>
