@@ -1,0 +1,17 @@
+<nav *ngIf="isPlayerLogged">
+	<ul>
+		<li>
+			<a routerLink="" routerLinkActive="nav--active" [routerLinkActiveOptions]="{ exact: true }">
+				<mat-icon aria-hidden="false" aria-label="Example home icon">home</mat-icon> Home
+			</a>
+		</li>
+		<li>
+			<a routerLink="/character-infos" routerLinkActive="nav--active">
+				<mat-icon aria-hidden="false" aria-label="Example home icon">person</mat-icon> Character Infos
+			</a>
+		</li>
+		<li>
+			<a (click)="onLogout()" routerLink="/"> <mat-icon aria-hidden="false" aria-label="Example home icon">logout</mat-icon> Logout </a>
+		</li>
+	</ul>
+</nav>

@@ -6,5 +6,5 @@ export const initialState = {};
 export const characterReducer = createReducer(
     initialState,
     on(storeCharacterInfos, (state, {character})=> ({...character})),
-    on(deleteCharacterInfos, (state)=>({}))
+    on(deleteCharacterInfos, (state)=>(initialState))
 )

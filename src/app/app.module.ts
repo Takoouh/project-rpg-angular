@@ -19,6 +19,8 @@ import { CharactersFileComponent, CharactersFileDeleteModal } from './characters
 import { CharacterCreationComponent, CharactersCreationModal } from './character-creation/character-creation.component';
 import { AppRoutingModule } from './app-routing.module';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { CharacterInfosComponent } from './character-infos/character-infos.component';
+import { NavbarComponent } from './navbar/navbar.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,9 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
     CharactersFileComponent,
     CharacterCreationComponent,
     CharactersCreationModal,
-    CharactersFileDeleteModal
+    CharactersFileDeleteModal,
+    CharacterInfosComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
