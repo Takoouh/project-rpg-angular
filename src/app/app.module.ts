@@ -21,6 +21,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { CharacterInfosComponent } from './character-infos/character-infos.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { HomepageComponent } from './homepage/homepage.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { NavbarComponent } from './navbar/navbar.component';
     CharactersCreationModal,
     CharactersFileDeleteModal,
     CharacterInfosComponent,
-    NavbarComponent
+    NavbarComponent,
+    HomepageComponent
   ],
   imports: [
     BrowserModule,
