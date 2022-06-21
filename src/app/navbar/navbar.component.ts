@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
 import { deleteCharacterInfos } from '../character.actions';
+import { selectCharacter } from '../character.selector';
 import { Character } from '../interfaces/character';
 
 @Component({
@@ -9,8 +11,10 @@ import { Character } from '../interfaces/character';
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent implements OnInit {
-
-  constructor(private store:Store<{character:Character}>) { }
+  character$:Observable<Character>
+  constructor(private store:Store<{character:Character}>) {
+    this.character$=this.store.select(selectCharacter)
+   }
 
   
   isPlayerLogged= localStorage.getItem("currentCharacterId");

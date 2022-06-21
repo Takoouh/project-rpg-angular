@@ -1,4 +1,27 @@
 <nav *ngIf="isPlayerLogged">
+	<div *ngIf="character$ | async as character" class="character-status">
+		<h2>{{ character.name }}</h2>
+		<mat-divider></mat-divider>
+		<h2>Lv.{{ character.level }}</h2>
+		<div class="character-status_gauge">
+			<mat-icon aria-hidden="false" aria-label="Example home icon">favorite</mat-icon>
+			<div class="character-status_gauge--value">
+				<mat-progress-bar
+					color="warn"
+					mode="determinate"
+					value="{{ 100 / (character.life_point / character.remaining_life_point) }}"
+				></mat-progress-bar>
+				<span>{{ character.remaining_life_point }}/{{ character.life_point }}</span>
+			</div>
+		</div>
+		<div class="character-status_gauge">
+			<mat-icon aria-hidden="false" aria-label="Example home icon">star</mat-icon>
+			<div class="character-status_gauge--value">
+				<mat-progress-bar mode="determinate" value="{{ 100 / (100 / character.experience) }}"></mat-progress-bar>
+				<span>{{ character.experience }}/100 </span>
+			</div>
+		</div>
+	</div>
 	<ul>
 		<li>
 			<a routerLink="" routerLinkActive="nav--active" [routerLinkActiveOptions]="{ exact: true }">

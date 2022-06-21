@@ -12,7 +12,7 @@ import { Character } from '../interfaces/character';
 export class CharacterInfosComponent implements OnInit {
   character$: Observable<Character>;
   constructor(private store:Store) {    
-  this.character$=this.store.select(selectCharacter)
+    this.character$=this.store.select(selectCharacter)
   }
 
 

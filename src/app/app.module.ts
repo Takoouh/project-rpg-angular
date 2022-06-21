@@ -9,6 +9,9 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { MatDividerModule } from '@angular/material/divider';
+
 
 import { StoreModule } from '@ngrx/store';
 import { characterReducer } from './character.reducer';
@@ -46,6 +49,8 @@ import { HomepageComponent } from './homepage/homepage.component';
     MatIconModule,
     AppRoutingModule,
     MatDialogModule,
+    MatProgressBarModule,
+    MatDividerModule,
     //Reducer
     StoreModule.forRoot({character: characterReducer}),
     StoreDevtoolsModule.instrument({

@@ -10,18 +10,40 @@
             list-style: none;
             padding:0;
             li {
-                text-align: center;
+                text-align: left;
                 a {
                     display: block;
                     padding: 10px;
                     font-size: 18px;
                     text-decoration: none;
+                    mat-icon {
+                        line-height: 30px;
+                    }
                     &:hover{                    
                         background-color: rgb(65, 84, 95);
                     }
                     &.nav--active {                        
                         background-color: rgb(65, 84, 95);
                     }
+                }
+            }
+        }
+
+        .character-status{
+            padding: 10px;
+            &_gauge {
+                display: flex;
+                mat-icon {
+                    width: 30px;
+                    margin-right: 5px;
+                }
+                &--value{
+                    width:100%;
+                    padding-top: 8px;
+                    font-size: 12px;
+                    display: flex;
+                    align-items: center;
+                    flex-direction: column;
                 }
             }
         }
