@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { selectCharacter } from '../character.selector';
+import { selectCharacter } from '../store/character.selector';
 import { Character } from '../interfaces/character';
 
 @Component({

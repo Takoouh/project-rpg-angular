@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
-import {  storeCharacterInfos } from './character.actions';
-import { CharacterService } from './character.service';
-import { Character } from './interfaces/character';
+import { storeCharacterInfos } from './store/character.actions';
+import { CharacterService } from './services/character.service';
+import { AppStore } from './interfaces/store';
 
 @Component({
   selector: 'app-root',
@@ -11,13 +11,11 @@ import { Character } from './interfaces/character';
 })
 export class AppComponent {
 
-  constructor(private store:Store<{character:Character}>,
+  constructor(private store:Store<AppStore>,
     private characterService:CharacterService){
     };
 
   title = 'Project RPG';
-
-
 
   ngOnInit():void {
     const localStorageCharacterId:string | null = localStorage.getItem("currentCharacterId")

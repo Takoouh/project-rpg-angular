@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { deleteCharacterInfos } from '../character.actions';
-import { selectCharacter } from '../character.selector';
+import { deleteCharacterInfos } from '../store/character.actions';
+import { selectCharacter } from '../store/character.selector';
 import { Character } from '../interfaces/character';
+import { AppStore } from '../interfaces/store';
 
 @Component({
   selector: 'app-navbar',
@@ -11,9 +12,11 @@ import { Character } from '../interfaces/character';
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent implements OnInit {
-  character$:Observable<Character>
-  constructor(private store:Store<{character:Character}>) {
-    this.character$=this.store.select(selectCharacter)
+
+  character$:Observable<Character>;
+
+  constructor(private store:Store<AppStore>) {
+    this.character$=this.store.select(selectCharacter);
    }
 
   

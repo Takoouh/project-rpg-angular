@@ -1,0 +1,15 @@
+.mist-arena-battle-confirmation-modal {
+    h2 {
+        color: #636363;
+    }
+
+    &--answers {
+        display: flex;
+        place-content: space-around;
+            color:inherit;
+        button{
+            color:inherit;
+            width: 100px;
+        }
+    }
+}

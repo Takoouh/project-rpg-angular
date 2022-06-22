@@ -12,12 +12,12 @@
             li {
                 text-align: left;
                 a {
-                    display: block;
+                    display: flex;
                     padding: 10px;
                     font-size: 18px;
                     text-decoration: none;
                     mat-icon {
-                        line-height: 30px;
+                        margin-right: 10px;
                     }
                     &:hover{                    
                         background-color: rgb(65, 84, 95);

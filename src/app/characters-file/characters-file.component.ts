@@ -1,6 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { CharacterFile } from '../interfaces/character';
-import { CharacterService } from '../character.service';
+import { CharacterService } from '../services/character.service';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 
@@ -18,7 +18,7 @@ export interface CharacterDeleteModalData {
 export class CharactersFileComponent implements OnInit {
   constructor(
     private characterService: CharacterService,
-    public dialog: MatDialog
+    public modal: MatDialog
     ) { }
 
   characters: CharacterFile[] = [];
@@ -35,7 +35,7 @@ export class CharactersFileComponent implements OnInit {
   }
 
   openDialog(characterId:number, characterName: string){
-    let modalRef = this.dialog.open(CharactersFileDeleteModal, {
+    let modalRef = this.modal.open(CharactersFileDeleteModal, {
       data:{
         characterId,
         characterName,
