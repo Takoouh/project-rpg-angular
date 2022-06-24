@@ -7,3 +7,7 @@ export interface Monster {
     gold: number;
     experience: number;
 }
+
+export interface MonsterInBattle extends Monster {
+    remainingLifePoint: number;
+}

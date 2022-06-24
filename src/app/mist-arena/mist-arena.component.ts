@@ -2,10 +2,12 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
+import { BattleModalComponent } from '../battle-modal/battle-modal.component';
 import { Monster } from '../interfaces/monster';
 import { AppStore } from '../interfaces/store';
 import { BattleService } from '../services/battle.service';
 import { MonsterService } from '../services/monster.service';
+import { storeBattleInfos } from '../store/battle.actions';
 import { selectCharacter } from '../store/character.selector';
 import { storeMonsterList } from '../store/monsters.actions';
 import { selectMonsters } from '../store/monsters.selector';
@@ -62,13 +64,20 @@ export class MistArenaBattleConfirmationModal{
   constructor(
     @Inject(MAT_DIALOG_DATA) public data:MistArenaBattleConfirmationModalData,
     private store:Store<AppStore>,
-    private battleService: BattleService
+    private battleService: BattleService,
+    public modal:MatDialog
   ){
     this.store.select(selectCharacter).subscribe(result=> this.characterId= result.id)
   }
 
   onInitBattleValidation(monsterId:number){
-    this.battleService.initBattle(this.characterId, monsterId).subscribe(value=>console.log(value))
+    this.battleService.initBattle(this.characterId, monsterId).subscribe(result => {
+      if(result){
+        this.store.dispatch(storeBattleInfos({battleInfos:result}))
+        this.modal.closeAll()      
+        this.modal.open(BattleModalComponent, {disableClose:true})
+      }
+    })
   }
 
 }

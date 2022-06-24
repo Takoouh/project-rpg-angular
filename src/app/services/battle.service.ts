@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, Observable } from 'rxjs';
-import { BattleData } from '../interfaces/battle';
+import { BattleData, BattleSetUpData } from '../interfaces/battle';
 import { handleError } from './serviceHelpers';
 
 @Injectable({
@@ -13,7 +13,16 @@ export class BattleService {
 
   constructor(private http:HttpClient) { }
 
-  initBattle(characterId:number, monsterId:number):Observable<BattleData>{
-    return this.http.post<BattleData>(`${this.battleUrl}/${characterId}/${monsterId}`, {}).pipe(catchError(handleError<BattleData>('initBattle')))
+  initBattle(characterId:number, monsterId:number):Observable<BattleSetUpData>{
+    return this.http.post<BattleSetUpData>(`${this.battleUrl}/${characterId}/${monsterId}`, {}).pipe(catchError(handleError<BattleSetUpData>('initBattle')))
+  }
+
+  checkCharacterBattle(characterId:number):Observable<BattleSetUpData>{
+    return this.http.get<BattleSetUpData>(`${this.battleUrl}/${characterId}`).pipe(catchError(handleError<BattleSetUpData>('checkCharacterBattle')))
+  }
+
+  playerAttack(battleId:number):Observable<BattleData>{
+    console.log(battleId)
+    return this.http.patch<BattleData>(`${this.battleUrl}/${battleId}/attack`, {}).pipe(catchError(handleError<BattleData>('playerAttack')))
   }
 }

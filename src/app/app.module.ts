@@ -18,6 +18,7 @@ import { MatCardModule } from '@angular/material/card';
 
 import { characterReducer } from './store/character.reducer';
 import { monstersReducer } from './store/monsters.reducer';
+import { battleReducer } from './store/battle.reducer';
 
 import { AppComponent } from './app.component';
 import { CharactersFileComponent, CharactersFileDeleteModal } from './characters-file/characters-file.component';
@@ -27,6 +28,7 @@ import { CharacterInfosComponent } from './character-infos/character-infos.compo
 import { NavbarComponent } from './navbar/navbar.component';
 import { HomepageComponent } from './homepage/homepage.component';
 import { MistArenaBattleConfirmationModal, MistArenaComponent } from './mist-arena/mist-arena.component';
+import { BattleModalComponent } from './battle-modal/battle-modal.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +41,8 @@ import { MistArenaBattleConfirmationModal, MistArenaComponent } from './mist-are
     NavbarComponent,
     HomepageComponent,
     MistArenaComponent,
-    MistArenaBattleConfirmationModal
+    MistArenaBattleConfirmationModal,
+    BattleModalComponent
   ],
   imports: [
     BrowserModule,
@@ -57,7 +60,7 @@ import { MistArenaBattleConfirmationModal, MistArenaComponent } from './mist-are
     MatDividerModule,
     MatCardModule,
     //Reducer
-    StoreModule.forRoot({character: characterReducer, monsters: monstersReducer}),
+    StoreModule.forRoot({character: characterReducer, monsters: monstersReducer, battle: battleReducer}),
     StoreDevtoolsModule.instrument({
       name: 'Project-rpg App'
     })
