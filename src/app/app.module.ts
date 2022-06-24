@@ -16,19 +16,19 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatCardModule } from '@angular/material/card';
 
-import { characterReducer } from './store/character.reducer';
-import { monstersReducer } from './store/monsters.reducer';
-import { battleReducer } from './store/battle.reducer';
+import { characterReducer } from './store/character/character.reducer';
+import { monstersReducer } from './store/monsters/monsters.reducer';
+import { battleReducer } from './store/battle/battle.reducer';
 
 import { AppComponent } from './app.component';
-import { CharactersFileComponent, CharactersFileDeleteModal } from './characters-file/characters-file.component';
-import { CharacterCreationComponent, CharactersCreationModal } from './character-creation/character-creation.component';
+import { CharactersFileComponent, CharactersFileDeleteModal } from './core/characters-file/characters-file.component';
+import { CharacterCreationComponent, CharactersCreationModal } from './core/characters-file/components/character-creation/character-creation.component';
 import { AppRoutingModule } from './app-routing.module';
-import { CharacterInfosComponent } from './character-infos/character-infos.component';
-import { NavbarComponent } from './navbar/navbar.component';
-import { HomepageComponent } from './homepage/homepage.component';
-import { MistArenaBattleConfirmationModal, MistArenaComponent } from './mist-arena/mist-arena.component';
-import { BattleModalComponent } from './battle-modal/battle-modal.component';
+import { CharacterInfosComponent } from './core/character-infos/character-infos.component';
+import { NavbarComponent } from './common/navbar/navbar.component';
+import { HomepageComponent } from './core/homepage/homepage.component';
+import { MistArenaBattleConfirmationModal, MistArenaComponent } from './core/mist-arena/mist-arena.component';
+import { BattleModalComponent } from './common/battle-modal/battle-modal.component';
 
 @NgModule({
   declarations: [

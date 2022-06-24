@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { CharacterInfosComponent } from './character-infos/character-infos.component';
-import { CharactersFileComponent } from './characters-file/characters-file.component';
-import { HomepageComponent } from './homepage/homepage.component';
-import { MistArenaComponent } from './mist-arena/mist-arena.component';
+import { CharacterInfosComponent } from './core/character-infos/character-infos.component';
+import { CharactersFileComponent } from './core/characters-file/characters-file.component';
+import { HomepageComponent } from './core/homepage/homepage.component';
+import { MistArenaComponent } from './core/mist-arena/mist-arena.component';
 
 
 const routes:Routes = !localStorage.getItem("currentCharacterId")?

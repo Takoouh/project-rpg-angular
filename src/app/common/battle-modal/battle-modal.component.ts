@@ -1,19 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { BattleSetUpData } from '../interfaces/battle';
-import { Character } from '../interfaces/character';
-import { Monster, MonsterInBattle } from '../interfaces/monster';
-import { AppStore } from '../interfaces/store';
-import { BattleService } from '../services/battle.service';
-import { CharacterService } from '../services/character.service';
-import { MonsterService } from '../services/monster.service';
-import { updateBattleInfos } from '../store/battle.actions';
-import { selectBattleInfos } from '../store/battle.selector';
-import { storeCharacterInfos } from '../store/character.actions';
-import { selectCharacter } from '../store/character.selector';
-import { storeMonsterList } from '../store/monsters.actions';
-import { selectMonsters, selectMonterInBattle } from '../store/monsters.selector';
+import { Character } from '../../interfaces/character';
+import { Monster, MonsterInBattle } from '../../interfaces/monster';
+import { AppStore } from '../../interfaces/store';
+import { BattleService } from '../../services/battle.service';
+import { CharacterService } from '../../services/character.service';
+import { MonsterService } from '../../services/monster.service';
+import { updateBattleInfos } from '../../store/battle/battle.actions';
+import { selectBattleInfos } from '../../store/battle/battle.selector';
+import { storeCharacterInfos } from '../../store/character/character.actions';
+import { selectCharacter } from '../../store/character/character.selector';
+import { storeMonsterList } from '../../store/monsters/monsters.actions';
+import { selectMonsters, selectMonterInBattle } from '../../store/monsters/monsters.selector';
 
 @Component({
   selector: 'app-battle-modal',

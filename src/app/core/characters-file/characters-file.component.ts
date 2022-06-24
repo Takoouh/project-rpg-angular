@@ -1,6 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { CharacterFile } from '../interfaces/character';
-import { CharacterService } from '../services/character.service';
+import { CharacterFile } from '../../interfaces/character';
+import { CharacterService } from '../../services/character.service';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 
@@ -57,8 +57,8 @@ export class CharactersFileComponent implements OnInit {
 
 @Component({
   selector: 'characters-file-delete-modal',
-  templateUrl:'characters-file-delete-modal.html',
-  styleUrls: ['./characters-file-delete-modal.scss']
+  templateUrl:'./components/characters-file-delete-modal/characters-file-delete-modal.html',
+  styleUrls: ['./components/characters-file-delete-modal/characters-file-delete-modal.scss']
 })
 export class CharactersFileDeleteModal {
   constructor(

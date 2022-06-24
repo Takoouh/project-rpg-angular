@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { storeCharacterInfos } from './store/character.actions';
+import { storeCharacterInfos } from './store/character/character.actions';
 import { CharacterService } from './services/character.service';
 import { AppStore } from './interfaces/store';
 import { BattleService } from './services/battle.service';
-import { storeBattleInfos } from './store/battle.actions';
+import { storeBattleInfos } from './store/battle/battle.actions';
 import { MatDialog } from '@angular/material/dialog';
-import { BattleModalComponent } from './battle-modal/battle-modal.component';
+import { BattleModalComponent } from './common/battle-modal/battle-modal.component';
 
 @Component({
   selector: 'app-root',

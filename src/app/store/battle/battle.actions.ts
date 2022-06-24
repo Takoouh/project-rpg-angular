@@ -1,5 +1,5 @@
 import { createAction, props } from "@ngrx/store";
-import { BattleData, BattleSetUpData } from "../interfaces/battle";
+import { BattleData, BattleSetUpData } from "../../interfaces/battle";
 
 export const storeBattleInfos = createAction("[Battle] Store Battle Infos", props<{battleInfos: BattleSetUpData}>());
 

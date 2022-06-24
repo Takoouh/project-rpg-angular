@@ -1,5 +1,5 @@
 import { createReducer, on } from "@ngrx/store"
-import { Monster } from "../interfaces/monster";
+import { Monster } from "../../interfaces/monster";
 import { storeMonsterList } from "./monsters.actions";
 
 const initialState: Monster[] = [];

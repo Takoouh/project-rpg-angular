@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { selectCharacter } from '../store/character.selector';
-import { Character } from '../interfaces/character';
+import { selectCharacter } from '../../store/character/character.selector';
+import { Character } from '../../interfaces/character';
 
 @Component({
   selector: 'app-character-infos',

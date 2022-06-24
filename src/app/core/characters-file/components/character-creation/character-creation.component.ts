@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
-import { CharacterService } from '../services/character.service';
+import { CharacterService } from '../../../../services/character.service';
 
 @Component({
   selector: 'app-character-creation',

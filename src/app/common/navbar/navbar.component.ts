@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { deleteCharacterInfos } from '../store/character.actions';
-import { selectCharacter } from '../store/character.selector';
-import { Character } from '../interfaces/character';
-import { AppStore } from '../interfaces/store';
+import { deleteCharacterInfos } from '../../store/character/character.actions';
+import { selectCharacter } from '../../store/character/character.selector';
+import { Character } from '../../interfaces/character';
+import { AppStore } from '../../interfaces/store';
 
 @Component({
   selector: 'app-navbar',

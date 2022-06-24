@@ -1,16 +1,15 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs';
-import { BattleModalComponent } from '../battle-modal/battle-modal.component';
-import { Monster } from '../interfaces/monster';
-import { AppStore } from '../interfaces/store';
-import { BattleService } from '../services/battle.service';
-import { MonsterService } from '../services/monster.service';
-import { storeBattleInfos } from '../store/battle.actions';
-import { selectCharacter } from '../store/character.selector';
-import { storeMonsterList } from '../store/monsters.actions';
-import { selectMonsters } from '../store/monsters.selector';
+import { BattleModalComponent } from '../../common/battle-modal/battle-modal.component';
+import { Monster } from '../../interfaces/monster';
+import { AppStore } from '../../interfaces/store';
+import { BattleService } from '../../services/battle.service';
+import { MonsterService } from '../../services/monster.service';
+import { storeBattleInfos } from '../../store/battle/battle.actions';
+import { selectCharacter } from '../../store/character/character.selector';
+import { storeMonsterList } from '../../store/monsters/monsters.actions';
+import { selectMonsters } from '../../store/monsters/monsters.selector';
 
 export interface MistArenaBattleConfirmationModalData {
   monsterName: string;
