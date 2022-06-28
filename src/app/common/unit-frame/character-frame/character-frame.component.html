@@ -1,0 +1,22 @@
+<div *ngIf="unit" [class]="unitFrameClasses">
+	<h2>Lv.{{ unit.level }} {{ hideName ? '' : unit.name }}</h2>
+	<mat-divider></mat-divider>
+	<div class="unit-status_gauge">
+		<mat-icon aria-hidden="false" aria-label="Example home icon">favorite</mat-icon>
+		<div class="unit-status_gauge--value">
+			<mat-progress-bar
+				color="warn"
+				mode="determinate"
+				value="{{ 100 / (unit.life_point / unit.remaining_life_point) }}"
+			></mat-progress-bar>
+			<span>{{ unit.remaining_life_point }}/{{ unit.life_point }}</span>
+		</div>
+	</div>
+	<div class="unit-status_gauge">
+		<mat-icon aria-hidden="false" aria-label="Example home icon">star</mat-icon>
+		<div class="unit-status_gauge--value">
+			<mat-progress-bar mode="determinate" value="{{ 100 / (100 / unit.experience) }}"></mat-progress-bar>
+			<span>{{ unit.experience }}/100 </span>
+		</div>
+	</div>
+</div>

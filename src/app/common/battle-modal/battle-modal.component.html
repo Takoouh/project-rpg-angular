@@ -1,43 +1,8 @@
 <div *ngIf="!isBattleOver" class="battle_modal">
 	<h2>Let's Fight !</h2>
 	<div class="battle_modal-frames">
-		<div *ngIf="character$ | async as character" class="character-status">
-			<h2>Lv.{{ character.level }} {{ character.name }}</h2>
-			<mat-divider></mat-divider>
-			<div class="character-status_gauge">
-				<mat-icon aria-hidden="false" aria-label="Example home icon">favorite</mat-icon>
-				<div class="character-status_gauge--value">
-					<mat-progress-bar
-						color="warn"
-						mode="determinate"
-						value="{{ 100 / (character.life_point / character.remaining_life_point) }}"
-					></mat-progress-bar>
-					<span>{{ character.remaining_life_point }}/{{ character.life_point }}</span>
-				</div>
-			</div>
-			<div class="character-status_gauge">
-				<mat-icon aria-hidden="false" aria-label="Example home icon">star</mat-icon>
-				<div class="character-status_gauge--value">
-					<mat-progress-bar mode="determinate" value="{{ 100 / (100 / character.experience) }}"></mat-progress-bar>
-					<span>{{ character.experience }}/100 </span>
-				</div>
-			</div>
-		</div>
-		<div *ngIf="monster$ | async as monster" class="character-status">
-			<h2>{{ monster.monster_name }}</h2>
-			<mat-divider></mat-divider>
-			<div class="character-status_gauge">
-				<mat-icon aria-hidden="false" aria-label="Example home icon">favorite</mat-icon>
-				<div class="character-status_gauge--value">
-					<mat-progress-bar
-						color="warn"
-						mode="determinate"
-						value="{{ 100 / (monster.life_point / monster.remainingLifePoint) }}"
-					></mat-progress-bar>
-					<span>{{ monster.remainingLifePoint }}/{{ monster.life_point }}</span>
-				</div>
-			</div>
-		</div>
+		<app-character-frame *ngIf="character$ | async as character" [unit]="character"></app-character-frame>
+		<app-monster-frame *ngIf="monster$ | async as monster" [unit]="monster"></app-monster-frame>
 	</div>
 	<div class="battle_modal-user_actions">
 		<button (click)="onAttack()" mat-raised-button color="warn">Attack</button>
@@ -47,38 +12,4 @@
 	</div>
 </div>
 
-<div *ngIf="isBattleOver" class="battle_modal battle_modal--result">
-	<h2>Congratulation ! You have deafeated your foe !</h2>
-	<div class="battle_modal-frames">
-		<div *ngIf="character$ | async as character" class="character-status">
-			<h2>Lv.{{ character.level }} {{ character.name }}</h2>
-			<mat-divider></mat-divider>
-			<div class="character-status_gauge">
-				<mat-icon aria-hidden="false" aria-label="Example home icon">favorite</mat-icon>
-				<div class="character-status_gauge--value">
-					<mat-progress-bar
-						color="warn"
-						mode="determinate"
-						value="{{ 100 / (character.life_point / character.remaining_life_point) }}"
-					></mat-progress-bar>
-					<span>{{ character.remaining_life_point }}/{{ character.life_point }}</span>
-				</div>
-			</div>
-			<div class="character-status_gauge">
-				<mat-icon aria-hidden="false" aria-label="Example home icon">star</mat-icon>
-				<div class="character-status_gauge--value">
-					<mat-progress-bar mode="determinate" value="{{ 100 / (100 / character.experience) }}"></mat-progress-bar>
-					<span>{{ character.experience }}/100 </span>
-				</div>
-			</div>
-		</div>
-	</div>
-	<p>You have acquired a certain amount of experience</p>
-	<p>You search among the remains of the corps your reward :</p>
-	<p>Here is your reward :</p>
-	<p>(nothing yet, unlucky)</p>
-
-	<div class="battle_modal-user_actions">
-		<button mat-button mat-raised-button color="primary" mat-dialog-close>Close</button>
-	</div>
-</div>
+<app-battle-modal-reward *ngIf="isBattleOver && (character$ | async) as character" [character]="character"></app-battle-modal-reward>
