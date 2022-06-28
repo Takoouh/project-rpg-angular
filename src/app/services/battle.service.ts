@@ -9,7 +9,7 @@ import { handleError } from './serviceHelpers';
 })
 export class BattleService {
 
-  private battleUrl:string = 'http://localhost:3000/battle'
+  private battleUrl:string = 'https://project-rpg-api.herokuapp.com/battle'
 
   constructor(private http:HttpClient) { }
 

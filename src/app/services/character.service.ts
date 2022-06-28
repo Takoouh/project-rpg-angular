@@ -11,7 +11,7 @@ import { handleError } from './serviceHelpers';
   providedIn: 'root'
 })
 export class CharacterService {
-  private characterUrl = 'http://localhost:3000/characters'
+  private characterUrl = 'https://project-rpg-api.herokuapp.com/characters'
   private httpOptions = {
     headers: new HttpHeaders({'Content-Type': 'application/json'})
   }

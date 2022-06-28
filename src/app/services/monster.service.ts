@@ -11,7 +11,7 @@ export class MonsterService {
 
   constructor(private http: HttpClient) { }
   
-  private characterUrl = 'http://localhost:3000/monsters'
+  private characterUrl = 'https://project-rpg-api.herokuapp.com/monsters'
 
   getMonsters():Observable<Monster[]>{
     return this.http.get<Monster[]>(this.characterUrl).pipe(catchError(handleError<Monster[]>('getMonsters', [])))
