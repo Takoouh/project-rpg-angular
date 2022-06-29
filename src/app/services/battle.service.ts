@@ -22,7 +22,6 @@ export class BattleService {
   }
 
   playerAttack(battleId:number):Observable<BattleData>{
-    console.log(battleId)
     return this.http.patch<BattleData>(`${this.battleUrl}/${battleId}/attack`, {}).pipe(catchError(handleError<BattleData>('playerAttack')))
   }
 }

@@ -1,7 +1,16 @@
-<div class="resurrection_altar">
-	<h2>Greetings poor soul !</h2>
-	<p>I see you've fallen to the foe, and you've been guided on the path to the light again</p>
-	<p>Come fourth, and prepare yourself to be reincarnated</p>
-	<p>I sure wish your fate won't be the same, and that you have learn from your mistake</p>
-	<p>Woops, reincarnation is not yet available !</p>
+<div [className]="'resurrection_altar' + disappearingClass">
+	<div *ngIf="characterId$ | async as characterId" class="resurrection_altar-speech">
+		<h2>Greetings {{ characterName$ | async }} !</h2>
+		<p [className]="'resurrection_altar--hidden' + textApparitionClass1">
+			I see your body have fallen to a foe, and your poor soul has been guided on the path to the light again
+		</p>
+		<p [className]="'resurrection_altar--hidden' + textApparitionClass2">Come forth, and prepare yourself to be reincarnated</p>
+		<p [className]="'resurrection_altar--hidden' + textApparitionClass3">
+			I sure wish your fate won't be the same, and that you have learn from your mistake
+		</p>
+		<p [className]="'resurrection_altar--hidden' + textApparitionClass4">So now, are you ready to return to your adventure ?</p>
+		<div [className]="'resurrection_altar--hidden' + textApparitionClass5">
+			<button (click)="onReviveBtnClick(characterId)" mat-button mat-raised-button color="primary">Send me back to the living !</button>
+		</div>
+	</div>
 </div>

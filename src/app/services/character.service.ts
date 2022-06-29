@@ -11,6 +11,12 @@ import { handleError } from './serviceHelpers';
   providedIn: 'root'
 })
 export class CharacterService {
+  
+  constructor(
+    private http: HttpClient,
+  ) { }
+
+  
   private characterUrl = 'http://localhost:3000/characters'
   private httpOptions = {
     headers: new HttpHeaders({'Content-Type': 'application/json'})
@@ -44,9 +50,12 @@ export class CharacterService {
     )
   }
 
+  reviveCharacter(characterId:number):Observable<Character>{
+    return this.http.patch<Character>(`${this.characterUrl}/${characterId}/revive`, {}).pipe(
+      catchError(handleError<Character>('reviveCharacter'))
+    )
+  }
 
 
-  constructor(
-    private http: HttpClient,
-  ) { }
+
 }
