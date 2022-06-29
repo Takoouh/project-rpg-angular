@@ -32,6 +32,8 @@ import { BattleModalComponent } from './common/battle-modal/battle-modal.compone
 import { CharacterFrameComponent } from './common/unit-frame/character-frame/character-frame.component';
 import { MonsterFrameComponent } from './common/unit-frame/monster-frame/monster-frame.component';
 import { BattleModalRewardComponent } from './common/battle-modal/components/battle-modal-reward/battle-modal-reward.component';
+import { BattleLostModalComponent } from './common/battle-modal/components/battle-lost-modal/battle-lost-modal.component';
+import { ResurrectionAltarComponent } from './core/resurrection-altar/resurrection-altar.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +50,9 @@ import { BattleModalRewardComponent } from './common/battle-modal/components/bat
     BattleModalComponent,
     CharacterFrameComponent,
     MonsterFrameComponent,
-    BattleModalRewardComponent
+    BattleModalRewardComponent,
+    BattleLostModalComponent,
+    ResurrectionAltarComponent
   ],
   imports: [
     BrowserModule,

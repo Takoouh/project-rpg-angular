@@ -12,4 +12,9 @@
 	</div>
 </div>
 
-<app-battle-modal-reward *ngIf="isBattleOver && (character$ | async) as character" [character]="character"></app-battle-modal-reward>
+<app-battle-lost-modal *ngIf="isCharacterDead"></app-battle-lost-modal>
+
+<app-battle-modal-reward
+	*ngIf="!isCharacterDead && isBattleOver && (character$ | async) as character"
+	[character]="character"
+></app-battle-modal-reward>

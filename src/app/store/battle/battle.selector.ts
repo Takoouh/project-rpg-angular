@@ -1,4 +1,4 @@
 import { createFeatureSelector } from "@ngrx/store";
-import { BattleSetUpData } from "../../interfaces/battle";
+import { BattleReducer } from "../../interfaces/battle";
 
-export const selectBattleInfos = createFeatureSelector<Readonly<BattleSetUpData>>('battle');
+export const selectBattleInfos = createFeatureSelector<Readonly<BattleReducer>>('battle');

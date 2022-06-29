@@ -1,0 +1,82 @@
+
+.resurrection_altar {
+    position: absolute;
+    top:0;
+    left:0;
+    width:100vw;
+    height: 100vh;
+    background-color: white;
+    display: block;
+    text-align: center;
+
+    -webkit-animation: fadeInFromNone 1.5s ease-out;
+    -moz-animation: fadeInFromNone 1.5s ease-out;
+    -o-animation: fadeInFromNone 1.5s ease-out;
+    animation: fadeInFromNone 1.5s ease-out;
+
+    h2,p{
+        color: rgb(67,67,67);
+    }
+}
+
+@-webkit-keyframes fadeInFromNone {
+    0% {
+        display: none;
+        opacity: 0;
+    }
+
+    1% {
+        display: block;
+        opacity: 0;
+    }
+
+    100% {
+        display: block;
+        opacity: 1;
+    }
+}
+
+@-moz-keyframes fadeInFromNone {
+    0% {
+        display: none;
+        opacity: 0;
+    }
+
+    1% {
+        display: block;
+        opacity: 0;
+    }
+
+    100% {
+        display: block;
+        opacity: 1;
+    }
+}
+
+@-o-keyframes fadeInFromNone {
+    0% {
+        display: none;
+        opacity: 0;
+    }
+
+    1% {
+        display: block;
+        opacity: 0;
+    }
+
+    100% {
+        display: block;
+        opacity: 1;
+    }
+}
+
+@keyframes fadeInFromNone {
+    0% {
+        display: none;
+        opacity: 0;
+    }
+
+    1% {
+        display: block;
+    }
+}

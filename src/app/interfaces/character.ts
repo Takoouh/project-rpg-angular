@@ -16,6 +16,13 @@ export interface Character {
     stats:CharacterStats;
 }
 
+export interface CharacterInitialState {
+    isCharacterDead: boolean;
+}
+
+export interface CharacterState extends Character, CharacterInitialState  {
+}
+
 export interface CharacterStats {
     strength: number;
     speed: number;

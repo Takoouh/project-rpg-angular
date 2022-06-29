@@ -26,7 +26,8 @@ character$:Observable<Character>;
 monster$:Observable<MonsterInBattle>;
 battleId:number = 0;
 characterId:number = 0;
-isBattleOver:boolean = false ;
+isBattleOver:boolean = false;
+isCharacterDead:boolean = false;
 
 preventFurtherAction: boolean = false;
 
@@ -39,9 +40,7 @@ preventFurtherAction: boolean = false;
     this.store.select(selectMonsters).subscribe(result=> this.monsterList =[...result])  
     this.character$ = this.store.select(selectCharacter);
     this.monster$ = this.store.select(selectMonterInBattle);
-    this.store.select(selectBattleInfos).subscribe(result=> 
-       this.battleId = result.id
-    );
+    this.store.select(selectBattleInfos).subscribe(result=>this.battleId = result.id);
     this.store.select(selectCharacter).subscribe(result => this.characterId = result.id);
   }
 
@@ -56,14 +55,16 @@ preventFurtherAction: boolean = false;
     this.battleService.playerAttack(this.battleId).subscribe(result => {
       this.store.dispatch(updateBattleInfos({battleInfos:result}))
       this.characterService.getCharacter(this.characterId).subscribe(result=>
-        
+        // animation too see health bar depleting
         setTimeout(()=>{
           this.store.dispatch(storeCharacterInfos({character:result}));   
           this.preventFurtherAction=false;
         }, 500)
         );
       if(result.isBattleOver){
+        // animation to wait a bit before hiding battle view
         setTimeout(()=>{
+          this.isCharacterDead = result.monsterRemainingLife > 0
           this.isBattleOver = true;
           this.preventFurtherAction=false; 
         }, 1000)
