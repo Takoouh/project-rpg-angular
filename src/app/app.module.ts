@@ -15,6 +15,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatCardModule } from '@angular/material/card';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 import { characterReducer } from './store/character/character.reducer';
 import { monstersReducer } from './store/monsters/monsters.reducer';
@@ -34,6 +35,8 @@ import { MonsterFrameComponent } from './common/unit-frame/monster-frame/monster
 import { BattleModalRewardComponent } from './common/battle-modal/components/battle-modal-reward/battle-modal-reward.component';
 import { BattleLostModalComponent } from './common/battle-modal/components/battle-lost-modal/battle-lost-modal.component';
 import { ResurrectionAltarComponent } from './core/resurrection-altar/resurrection-altar.component';
+import { LoaderComponent } from './common/loader/loader.component';
+import { isLoadingReducer } from './store/isLoading/isLoading.reducer';
 
 @NgModule({
   declarations: [
@@ -52,7 +55,8 @@ import { ResurrectionAltarComponent } from './core/resurrection-altar/resurrecti
     MonsterFrameComponent,
     BattleModalRewardComponent,
     BattleLostModalComponent,
-    ResurrectionAltarComponent
+    ResurrectionAltarComponent,
+    LoaderComponent
   ],
   imports: [
     BrowserModule,
@@ -69,8 +73,9 @@ import { ResurrectionAltarComponent } from './core/resurrection-altar/resurrecti
     MatProgressBarModule,
     MatDividerModule,
     MatCardModule,
+    MatProgressSpinnerModule,
     //Reducer
-    StoreModule.forRoot({character: characterReducer, monsters: monstersReducer, battle: battleReducer}),
+    StoreModule.forRoot({character: characterReducer, monsters: monstersReducer, battle: battleReducer, isLoading: isLoadingReducer}),
     StoreDevtoolsModule.instrument({
       name: 'Project-rpg App'
     })

@@ -2,6 +2,9 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { CharacterFile } from '../../interfaces/character';
 import { CharacterService } from '../../services/character.service';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Store } from '@ngrx/store';
+import { AppStore } from 'src/app/interfaces/store';
+import { activateLoading, disactivateLoading } from 'src/app/store/isLoading/isLoading.actions';
 
 
 export interface CharacterDeleteModalData {
@@ -17,6 +20,7 @@ export interface CharacterDeleteModalData {
 })
 export class CharactersFileComponent implements OnInit {
   constructor(
+    private store:Store<AppStore>,
     private characterService: CharacterService,
     public modal: MatDialog
     ) { }
@@ -30,8 +34,11 @@ export class CharactersFileComponent implements OnInit {
   }
 
   getCharacters(): void {
+    this.store.dispatch(activateLoading());
     this.characterService.getCharacters()
-    .subscribe(characters => this.characters = characters);
+    .subscribe(characters => {
+      this.store.dispatch(disactivateLoading());
+      this.characters = characters});
   }
 
   openDialog(characterId:number, characterName: string){

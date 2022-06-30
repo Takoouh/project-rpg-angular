@@ -7,4 +7,5 @@ export interface AppStore {
     character:Character;
     monsters: Monster[];
     battle:BattleSetUpData;
+    isLoading: boolean;
 }

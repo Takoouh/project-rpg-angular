@@ -1,6 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Store } from '@ngrx/store';
+import { activateLoading, disactivateLoading } from 'src/app/store/isLoading/isLoading.actions';
 import { BattleModalComponent } from '../../common/battle-modal/battle-modal.component';
 import { Monster } from '../../interfaces/monster';
 import { AppStore } from '../../interfaces/store';
@@ -43,9 +44,13 @@ export class MistArenaComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    if(this.monsterList.length === 0){
+    this.store.dispatch(activateLoading());
     this.monsterService.getMonsters().subscribe(result=> 
-        this.store.dispatch(storeMonsterList({monsters: result}))
+      {  this.store.dispatch(storeMonsterList({monsters: result}))        
+        this.store.dispatch(disactivateLoading());}
       );
+    }
   }
 
 }

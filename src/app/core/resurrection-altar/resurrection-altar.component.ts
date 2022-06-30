@@ -5,6 +5,7 @@ import { AppStore } from 'src/app/interfaces/store';
 import { CharacterService } from 'src/app/services/character.service';
 import { reviveAndUpdateCharacter } from 'src/app/store/character/character.actions';
 import { selectCharacterId, selectCharacterName } from 'src/app/store/character/character.selector';
+import { activateLoading, disactivateLoading } from 'src/app/store/isLoading/isLoading.actions';
 
 @Component({
   selector: 'app-resurrection-altar',
@@ -31,8 +32,14 @@ export class ResurrectionAltarComponent implements OnInit {
 
   onReviveBtnClick(characterId:number):void {
     this.disappearingClass = " resurrection_altar--dismounting"
-    setTimeout( ()=>this.characterService.reviveCharacter(characterId).subscribe(result=> this.store.dispatch(reviveAndUpdateCharacter({character:{...result, isCharacterDead:false}}))),1500 )
-   
+    this.store.dispatch(activateLoading());
+    this.characterService.reviveCharacter(characterId)
+      .subscribe(result=> {
+        setTimeout(()=>
+         {
+           this.store.dispatch(disactivateLoading());
+          this.store.dispatch(reviveAndUpdateCharacter({character:{...result, isCharacterDead:false}}))
+        },1500)});
   }
 
   ngOnInit(): void {

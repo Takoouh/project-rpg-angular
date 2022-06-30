@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
+import { activateLoading, disactivateLoading } from 'src/app/store/isLoading/isLoading.actions';
 import { Character } from '../../interfaces/character';
 import { Monster, MonsterInBattle } from '../../interfaces/monster';
 import { AppStore } from '../../interfaces/store';
@@ -51,8 +52,9 @@ preventFurtherAction: boolean = false;
     }
     this.preventFurtherAction = true;
 
-
+    this.store.dispatch(activateLoading());
     this.battleService.playerAttack(this.battleId).subscribe(result => {
+      this.store.dispatch(disactivateLoading())
       this.store.dispatch(updateBattleInfos({battleInfos:result}))
       this.characterService.getCharacter(this.characterId).subscribe(result=>
         // animation too see health bar depleting
@@ -75,8 +77,11 @@ preventFurtherAction: boolean = false;
   ngOnInit(): void {
     
     if(this.monsterList.length === 0 ){ 
+      this.store.dispatch(activateLoading());
       this.monsterService.getMonsters().subscribe(result => 
-        this.store.dispatch(storeMonsterList({monsters:result}))
+        {
+          this.store.dispatch(disactivateLoading());
+          this.store.dispatch(storeMonsterList({monsters:result}))}
       )
      }
   }
