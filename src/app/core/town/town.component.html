@@ -1,0 +1,9 @@
+<div class="town" *ngIf="currentTown$ | async as currentTown">
+    <h1>You are currently in {{currentTown.place_name}}</h1>
+    <p>Where are you headed ?</p>
+    <div class="town_activities">        
+        <button *ngIf="currentTown.has_inn" (click)="openInnModal()">
+            Inn
+        </button>
+    </div>
+</div>

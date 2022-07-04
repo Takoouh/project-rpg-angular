@@ -56,6 +56,12 @@ export class CharacterService {
     )
   }
 
+  restInInn(characterId:number):Observable<Character>{
+    return this.http.patch<Character>(`${this.characterUrl}/${characterId}/rest-in-inn`, {}).pipe(
+      catchError(handleError<Character>('restInInn'))
+    )
+  }
+
 
 
 }

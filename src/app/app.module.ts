@@ -27,7 +27,7 @@ import { CharacterCreationComponent, CharactersCreationModal } from './core/char
 import { AppRoutingModule } from './app-routing.module';
 import { CharacterInfosComponent } from './core/character-infos/character-infos.component';
 import { NavbarComponent } from './common/navbar/navbar.component';
-import { HomepageComponent } from './core/homepage/homepage.component';
+import { BeginnerBookComponent } from './core/beginner-book/beginner-book.component';
 import { MistArenaBattleConfirmationModal, MistArenaComponent } from './core/mist-arena/mist-arena.component';
 import { BattleModalComponent } from './common/battle-modal/battle-modal.component';
 import { CharacterFrameComponent } from './common/unit-frame/character-frame/character-frame.component';
@@ -37,6 +37,8 @@ import { BattleLostModalComponent } from './common/battle-modal/components/battl
 import { ResurrectionAltarComponent } from './core/resurrection-altar/resurrection-altar.component';
 import { LoaderComponent } from './common/loader/loader.component';
 import { isLoadingReducer } from './store/isLoading/isLoading.reducer';
+import { TownComponent } from './core/town/town.component';
+import { TownInnComponent } from './core/town/components/town-inn/town-inn.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +49,7 @@ import { isLoadingReducer } from './store/isLoading/isLoading.reducer';
     CharactersFileDeleteModal,
     CharacterInfosComponent,
     NavbarComponent,
-    HomepageComponent,
+    BeginnerBookComponent,
     MistArenaComponent,
     MistArenaBattleConfirmationModal,
     BattleModalComponent,
@@ -56,7 +58,9 @@ import { isLoadingReducer } from './store/isLoading/isLoading.reducer';
     BattleModalRewardComponent,
     BattleLostModalComponent,
     ResurrectionAltarComponent,
-    LoaderComponent
+    LoaderComponent,
+    TownComponent,
+    TownInnComponent
   ],
   imports: [
     BrowserModule,

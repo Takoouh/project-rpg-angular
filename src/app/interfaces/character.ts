@@ -1,3 +1,5 @@
+import { Place } from "./place";
+
 export interface CharacterFile {
     id:number;
     name: string;
@@ -14,6 +16,7 @@ export interface Character {
     gold: number;
     items: Item[];
     stats:CharacterStats;
+    place: Place;
 }
 
 export interface CharacterInitialState {

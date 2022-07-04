@@ -11,4 +11,7 @@ export const selectCharacterId = createSelector(selectCharacter, (state:Characte
 export const selectIsCharacterDead = createSelector(
     selectCharacter, (state:CharacterState) => state.isCharacterDead )
 
+export const selectCharacterPlace = createSelector(selectCharacter, (state:CharacterState)=> state.place)
+
+export const selectCharacterGold = createSelector(selectCharacter, (state:CharacterState)=> state.gold)
 
