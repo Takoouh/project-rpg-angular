@@ -7,16 +7,16 @@
 			<mat-progress-bar
 				color="warn"
 				mode="determinate"
-				value="{{ 100 / (unit.life_point / unit.remaining_life_point) }}"
+				value="{{ 100 / (unit.life_points / unit.remaining_life_points) }}"
 			></mat-progress-bar>
-			<span>{{ unit.remaining_life_point }}/{{ unit.life_point }}</span>
+			<span>{{ unit.remaining_life_points }}/{{ unit.life_points }}</span>
 		</div>
 	</div>
 	<div class="unit-status_gauge">
 		<mat-icon aria-hidden="false" aria-label="Example home icon">star</mat-icon>
 		<div class="unit-status_gauge--value">
-			<mat-progress-bar mode="determinate" value="{{ 100 / (100 / unit.experience) }}"></mat-progress-bar>
-			<span>{{ unit.experience }}/100 </span>
+			<mat-progress-bar mode="determinate" value="{{ 100 / (unit.exp_to_level_up / unit.experience) }}"></mat-progress-bar>
+			<span>{{ unit.experience }}/{{ unit.exp_to_level_up }} </span>
 		</div>
 	</div>
 </div>

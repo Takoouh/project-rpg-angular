@@ -2,7 +2,7 @@
 <h3>Stats :</h3>
 <ul *ngIf="character$ | async as character">
 	<li>Level : {{ character.level }}</li>
-	<li>Life point : {{ character.remaining_life_point }}/{{ character.life_point }}</li>
+	<li>Life point : {{ character.remaining_life_points }}/{{ character.life_points }}</li>
 	<li>gold : {{ character.gold }}</li>
 	<li *ngIf="character.stats">strength : {{ character.stats.strength }}</li>
 	<li *ngIf="character.stats">speed : {{ character.stats.speed }}</li>
