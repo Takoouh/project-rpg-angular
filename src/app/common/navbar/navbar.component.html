@@ -2,6 +2,7 @@
 	<div *ngIf="character$ | async as character" class="character-status">
 		<h2>{{ character.name }}</h2>
 		<app-character-frame [unit]="character" [hideName]="true" [whiteMode]="true"></app-character-frame>
+		<p class="character-status--money"><mat-icon aria-hidden="false" aria-label="coins">paid</mat-icon> {{ character.gold }}</p>
 	</div>
 	<ul>
 		<li>
