@@ -8,60 +8,49 @@ import { Character, CharacterFile } from '../interfaces/character';
 import { handleError } from './serviceHelpers';
 
 @Injectable({
-  providedIn: 'root'
+	providedIn: 'root',
 })
 export class CharacterService {
-  
-  constructor(
-    private http: HttpClient,
-  ) { }
+	constructor(private http: HttpClient) {}
 
-  
-  private characterUrl = 'http://localhost:3000/characters'
-  private httpOptions = {
-    headers: new HttpHeaders({'Content-Type': 'application/json'})
-  }
+	private characterUrl = 'http://localhost:3000/characters';
+	private httpOptions = {
+		headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+	};
 
-  getCharacter(characterId:number):Observable<Character>{
-    return this.http.get<Character>(`${this.characterUrl}/${characterId}`)
-    .pipe(
-      catchError(handleError<Character>('getCharacter'))
-    )
-  }
+	getCharacter(characterId: number): Observable<Character> {
+		return this.http.get<Character>(`${this.characterUrl}/${characterId}`).pipe(catchError(handleError<Character>('getCharacter')));
+	}
 
-  getCharacters():Observable<CharacterFile[]>{
-    return this.http.get<CharacterFile[]>(this.characterUrl)
-    .pipe(
-      catchError(handleError<CharacterFile[]>('getCharacters', []))
-    )
-  }
+	getCharacters(): Observable<CharacterFile[]> {
+		return this.http.get<CharacterFile[]>(this.characterUrl).pipe(catchError(handleError<CharacterFile[]>('getCharacters', [])));
+	}
 
-  createCharacter(name:string):Observable<Character>{
-    return this.http.post<Character>(this.characterUrl, {name}, this.httpOptions)
-    .pipe(
-      catchError(handleError<Character>('createCharacter'))
-    )
-  }
+	createCharacter(name: string): Observable<Character> {
+		return this.http
+			.post<Character>(this.characterUrl, { name }, this.httpOptions)
+			.pipe(catchError(handleError<Character>('createCharacter')));
+	}
 
-  deleteCharacter(characterId:number):Observable<Character>{
-    return this.http.delete<Character>(`${this.characterUrl}/${characterId}`)
-    .pipe(
-      catchError(handleError<Character>('deleteCharacter'))
-    )
-  }
+	deleteCharacter(characterId: number): Observable<Character> {
+		return this.http.delete<Character>(`${this.characterUrl}/${characterId}`).pipe(catchError(handleError<Character>('deleteCharacter')));
+	}
 
-  reviveCharacter(characterId:number):Observable<Character>{
-    return this.http.patch<Character>(`${this.characterUrl}/${characterId}/revive`, {}).pipe(
-      catchError(handleError<Character>('reviveCharacter'))
-    )
-  }
+	reviveCharacter(characterId: number): Observable<Character> {
+		return this.http
+			.patch<Character>(`${this.characterUrl}/${characterId}/revive`, {})
+			.pipe(catchError(handleError<Character>('reviveCharacter')));
+	}
 
-  restInInn(characterId:number):Observable<Character>{
-    return this.http.patch<Character>(`${this.characterUrl}/${characterId}/rest-in-inn`, {}).pipe(
-      catchError(handleError<Character>('restInInn'))
-    )
-  }
+	restInInn(characterId: number): Observable<Character> {
+		return this.http
+			.patch<Character>(`${this.characterUrl}/${characterId}/rest-in-inn`, {})
+			.pipe(catchError(handleError<Character>('restInInn')));
+	}
 
-
-
+	attributeSkillPoint(characterId: number, stat: string): Observable<Character> {
+		return this.http
+			.patch<Character>(`${this.characterUrl}/${characterId}/attribute-skill-point/${stat}`, {})
+			.pipe(catchError(handleError<Character>('attributeSkillPoint')));
+	}
 }

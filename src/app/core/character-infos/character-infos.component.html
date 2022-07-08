@@ -1,13 +1,38 @@
 <h1>Your Character's Profile</h1>
 <h3>Stats :</h3>
-<ul *ngIf="character$ | async as character">
-	<li>Level : {{ character.level }}</li>
-	<li>Life point : {{ character.remaining_life_points }}/{{ character.life_points }}</li>
-	<li>gold : {{ character.gold }}</li>
-	<li *ngIf="character.stats">strength : {{ character.stats.strength }}</li>
-	<li *ngIf="character.stats">speed : {{ character.stats.speed }}</li>
-	<li *ngIf="character.stats">intelligence : {{ character.stats.intelligence }}</li>
-</ul>
+<div class="character_infos-stats" *ngIf="character$ | async as character">
+	<p *ngIf="character.skill_points">You have {{ character.skill_points }} skill points to attribute</p>
+	<p>Be careful on how you use them, as you can hardly reattribute them !</p>
+	<ul>
+		<li>Level : {{ character.level }}</li>
+		<li>Life point : {{ character.remaining_life_points }}/{{ character.life_points }}</li>
+		<li>gold : {{ character.gold }}</li>
+		<li *ngIf="character.stats">
+			<span>strength : {{ character.stats.strength }}</span>
+			<span *ngIf="character.skill_points">
+				<button (click)="onSkillPointAttribution(character.id, 'strength')">
+					<mat-icon aria-hidden="false" aria-label="add skill point to strength">add</mat-icon>
+				</button>
+			</span>
+		</li>
+		<li *ngIf="character.stats">
+			<span>speed : {{ character.stats.speed }}</span>
+			<span *ngIf="character.skill_points">
+				<button (click)="onSkillPointAttribution(character.id, 'speed')">
+					<mat-icon aria-hidden="false" aria-label="add skill point to speed">add</mat-icon>
+				</button>
+			</span>
+		</li>
+		<li *ngIf="character.stats">
+			<span>intelligence : {{ character.stats.intelligence }}</span>
+			<span *ngIf="character.skill_points">
+				<button (click)="onSkillPointAttribution(character.id, 'intelligence')">
+					<mat-icon aria-hidden="false" aria-label="add skill point to intelligence">add</mat-icon>
+				</button>
+			</span>
+		</li>
+	</ul>
+</div>
 
 <h3>Items :</h3>
 <p><span>Not yet</span></p>
