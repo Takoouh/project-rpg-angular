@@ -1,8 +1,11 @@
 <div class="town_modal town_modal_inn">
-    <h2>Inn</h2>
-    <p>Oy Traveller !</p>
-    <p>Are you in need of a room to rest ?</p>
-    <p>It is 15 gold the night !</p>
-    <button [disabled]="!hasEnoughGoldToRest" (click)="data.restInInn()">Pay 15 gold to rest</button>
-    <p *ngIf="!hasEnoughGoldToRest" class="town--warning">You don't have enough money to rest ...</p>
+	<h2>Inn</h2>
+	<p>Oy Traveller !</p>
+	<p>Are you in need of a room to rest ?</p>
+	<p>It is 15 gold the night !</p>
+	<div class="town_modal--actions">
+		<button [disabled]="!hasEnoughGoldToRest" (click)="data.restInInn()">Pay 15 gold to rest</button>
+		<button matDialogClose="true">Leave the inn</button>
+	</div>
+	<p *ngIf="!hasEnoughGoldToRest" class="town--warning">You don't have enough money to rest ...</p>
 </div>
