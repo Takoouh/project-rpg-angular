@@ -17,4 +17,5 @@
 <app-battle-modal-reward
 	*ngIf="!isCharacterDead && isBattleOver && (character$ | async) as character"
 	[character]="character"
+	[battleReward]="battleReward"
 ></app-battle-modal-reward>

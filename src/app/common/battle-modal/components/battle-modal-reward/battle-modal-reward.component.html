@@ -1,12 +1,15 @@
-<div class="battle_modal battle_modal--result">
+<div *ngIf="battleReward" class="battle_modal battle_modal--result">
 	<h2>Congratulation ! You have deafeated your foe !</h2>
 	<div class="battle_modal-frames">
 		<app-character-frame [unit]="character"></app-character-frame>
 	</div>
-	<p>You have acquired a certain amount of experience</p>
-	<p>You search among the remains of the corps your reward :</p>
-	<p>Here is your reward :</p>
-	<p>(nothing yet, unlucky)</p>
+	<p>You have acquired {{ battleReward.experience }} experiences point</p>
+	<p>You search among the remains of the corps, you find :</p>
+	<ul *ngIf="battleReward.gold > 0 || battleReward.items.length > 0">
+		<li *ngIf="battleReward.gold > 0"><mat-icon aria-hidden="false" aria-label="coins">paid</mat-icon> {{ battleReward.gold }}</li>
+		<li *ngFor="let item of battleReward.items">{{ item }}</li>
+	</ul>
+	<p *ngIf="battleReward.gold == 0 && battleReward.items.length == 0">Nothing ...</p>
 
 	<div class="battle_modal-user_actions">
 		<button mat-button mat-raised-button color="primary" mat-dialog-close>Close</button>
