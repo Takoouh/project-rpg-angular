@@ -1,7 +1,7 @@
 export interface ItemFromApi {
     id: number;
-    item_desc: string;
-    item_name: string;
+    desc: string;
+    name: string;
     price: number;
     speed: number;
     strength: number;

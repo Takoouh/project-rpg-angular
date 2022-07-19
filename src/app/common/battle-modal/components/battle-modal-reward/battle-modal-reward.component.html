@@ -7,7 +7,7 @@
 	<p>You search among the remains of the corps, you find :</p>
 	<ul *ngIf="battleReward.gold > 0 || battleReward.items.length > 0">
 		<li *ngIf="battleReward.gold > 0"><mat-icon aria-hidden="false" aria-label="coins">paid</mat-icon> {{ battleReward.gold }}</li>
-		<li *ngFor="let item of battleReward.items">{{ item.item_name }}</li>
+		<li *ngFor="let item of battleReward.items">{{ item.name }}</li>
 	</ul>
 	<p *ngIf="battleReward.gold == 0 && battleReward.items.length == 0">Nothing ...</p>
 
