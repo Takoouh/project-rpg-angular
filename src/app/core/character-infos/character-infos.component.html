@@ -32,7 +32,8 @@
 			</span>
 		</li>
 	</ul>
-</div>
 
-<h3>Items :</h3>
-<p><span>Not yet</span></p>
+	<h3>Items :</h3>
+	<p *ngIf="character.items.length === 0">You don't have anything</p>
+	<p *ngFor="let itemInfo of character.items">[ {{itemInfo.item.item_name}} ]  x {{itemInfo.quantity}}</p>
+</div>

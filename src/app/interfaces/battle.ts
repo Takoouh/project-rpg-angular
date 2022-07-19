@@ -1,3 +1,5 @@
+import { ItemFromApi } from "./item";
+
 export interface BattleSetUpData {
 	characterId: number;
 	monsterId: number;
@@ -17,7 +19,7 @@ export interface BattleDataApiResponse extends BattleData {
 export interface battleRewardData {
 	experience: number;
 	gold: number;
-	items: [];
+	items: ItemFromApi[];
 }
 
 export interface BattleReducer extends BattleSetUpData, BattleData {}

@@ -1,3 +1,4 @@
+import { ItemOnCharacter } from './item';
 import { Place } from './place';
 
 export interface CharacterFile {
@@ -16,7 +17,7 @@ export interface Character {
 	remaining_life_points: number;
 	life_points: number;
 	gold: number;
-	items: Item[];
+	items: ItemOnCharacter[];
 	stats: CharacterStats;
 	place: Place;
 }
@@ -33,12 +34,3 @@ export interface CharacterStats {
 	intelligence: number;
 }
 
-export interface Item {
-	item_name: string;
-	item_desc: string;
-	type: string;
-	subtype?: string;
-	price: number;
-	strength: number;
-	speed: number;
-}
