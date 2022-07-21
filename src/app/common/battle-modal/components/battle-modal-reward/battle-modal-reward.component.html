@@ -4,7 +4,7 @@
 		<app-character-frame [unit]="character"></app-character-frame>
 	</div>
 	<p>You have acquired {{ battleReward.experience }} experiences point</p>
-	<p>You search among the remains of the corps, you find :</p>
+	<p>You search among the remains of the corpse, you find :</p>
 	<ul *ngIf="battleReward.gold > 0 || battleReward.items.length > 0">
 		<li *ngIf="battleReward.gold > 0"><mat-icon aria-hidden="false" aria-label="coins">paid</mat-icon> {{ battleReward.gold }}</li>
 		<li *ngFor="let item of battleReward.items">{{ item.name }}</li>

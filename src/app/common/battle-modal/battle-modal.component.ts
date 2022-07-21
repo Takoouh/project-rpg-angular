@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { battleRewardData } from 'src/app/interfaces/battle';
+import { BattleDataApiResponse, battleRewardData } from 'src/app/interfaces/battle';
 import { activateLoading, disactivateLoading } from 'src/app/store/isLoading/isLoading.actions';
 import { Character } from '../../interfaces/character';
 import { Monster, MonsterInBattle } from '../../interfaces/monster';
@@ -31,6 +31,7 @@ export class BattleModalComponent implements OnInit {
 	isCharacterDead: boolean = false;
 	battleReward?: battleRewardData;
 
+	isItemRackOpen: boolean = false;
 	preventFurtherAction: boolean = false;
 
 	constructor(
@@ -54,26 +55,50 @@ export class BattleModalComponent implements OnInit {
 		this.preventFurtherAction = true;
 
 		this.store.dispatch(activateLoading());
-		this.battleService.playerAttack(this.battleId).subscribe(({ reward, ...result }) => {
-			this.store.dispatch(disactivateLoading());
-			this.store.dispatch(updateBattleInfos({ battleInfos: result }));
-			this.characterService.getCharacter(this.characterId).subscribe((result) =>
-				// animation too see health bar depleting
-				setTimeout(() => {
-					this.store.dispatch(storeCharacterInfos({ character: result }));
-					this.preventFurtherAction = false;
-				}, 500)
-			);
-			if (result.isBattleOver) {
-				this.battleReward = reward;
-				// animation to wait a bit before hiding battle view
-				setTimeout(() => {
-					this.isCharacterDead = result.monsterRemainingLife > 0;
-					this.isBattleOver = true;
-					this.preventFurtherAction = false;
-				}, 1000);
-			}
+		this.battleService.playerAttack(this.battleId).subscribe((result) => {
+			return this.resolveBattleAction(result);
 		});
+	}
+
+	onItemRackBtnToggle(): void {
+		this.isItemRackOpen = !this.isItemRackOpen;
+	}
+
+	onItemUse(itemId: number): void {
+		if (this.preventFurtherAction) {
+			return;
+		}
+		this.preventFurtherAction = true;
+
+		this.store.dispatch(activateLoading());
+
+		this.battleService.playerUseItemInBattle(this.battleId, itemId).subscribe((result) => {
+			return this.resolveBattleAction(result);
+		});
+
+		this.isItemRackOpen = false;
+	}
+
+	resolveBattleAction(apiCallResult: BattleDataApiResponse): void {
+		const { reward, ...result } = apiCallResult;
+		this.store.dispatch(disactivateLoading());
+		this.store.dispatch(updateBattleInfos({ battleInfos: result }));
+		this.characterService.getCharacter(this.characterId).subscribe((result) =>
+			// animation too see health bar depleting
+			setTimeout(() => {
+				this.store.dispatch(storeCharacterInfos({ character: result }));
+				this.preventFurtherAction = false;
+			}, 500)
+		);
+		if (result.isBattleOver) {
+			this.battleReward = reward;
+			// animation to wait a bit before hiding battle view
+			setTimeout(() => {
+				this.isCharacterDead = result.monsterRemainingLife > 0;
+				this.isBattleOver = true;
+				this.preventFurtherAction = false;
+			}, 1000);
+		}
 	}
 
 	ngOnInit(): void {

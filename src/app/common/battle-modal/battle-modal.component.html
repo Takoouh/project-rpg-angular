@@ -7,8 +7,16 @@
 	<div class="battle_modal-user_actions">
 		<button (click)="onAttack()" mat-raised-button color="warn">Attack</button>
 		<button mat-raised-button disabled color="warn">Magic</button>
-		<button mat-raised-button disabled color="warn">Items</button>
+		<button (click)="onItemRackBtnToggle()" mat-raised-button color="warn">Items</button>
 		<button mat-raised-button disabled color="warn">Run</button>
+	</div>
+	<div *ngIf="isItemRackOpen" class="battle_modal-user_items">
+		<ul *ngIf="character$ | async as character">
+			<li *ngIf="character.items.length === 0">You don't have any items ! Focus !</li>
+			<li *ngFor="let itemStack of character.items">
+				{{ itemStack.item.name }} x {{ itemStack.quantity }} <button (click)="onItemUse(itemStack.item.id)">Use</button>
+			</li>
+		</ul>
 	</div>
 </div>
 

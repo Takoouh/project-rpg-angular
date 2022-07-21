@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, Observable } from 'rxjs';
-import { BattleDataApiResponse, BattleSetUpData } from '../interfaces/battle';
+import { BattleData, BattleDataApiResponse, BattleSetUpData } from '../interfaces/battle';
 import { handleError } from './serviceHelpers';
 
 @Injectable({
@@ -28,5 +28,11 @@ export class BattleService {
 		return this.http
 			.patch<BattleDataApiResponse>(`${this.battleUrl}/${battleId}/attack`, {})
 			.pipe(catchError(handleError<BattleDataApiResponse>('playerAttack')));
+	}
+
+	playerUseItemInBattle(battleId: number, itemId: number): Observable<BattleDataApiResponse> {
+		return this.http
+			.patch<BattleDataApiResponse>(`${this.battleUrl}/${battleId}/use-item/${itemId}`, {})
+			.pipe(catchError(handleError<BattleDataApiResponse>('playerUseItemInBattle')));
 	}
 }
